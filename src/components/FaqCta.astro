@@ -1,0 +1,85 @@
+---
+const faqs = [
+  { q: 'Как быстро вы отвечаете?', a: 'Обычно отвечаю в течение рабочего дня, часто быстрее. Если пишете вечером или в выходные — отвечу на следующий рабочий день.' },
+  { q: 'Что если у меня нет технического ТЗ?', a: 'Это нормально — большинство клиентов приходят без ТЗ. На созвоне я задаю вопросы и сама фиксирую задачу в понятном виде, вам не нужно разбираться в технических терминах.' },
+  { q: 'Что будет с сайтом/ботом после запуска — вы остаётесь на связи?', a: 'Да. После запуска я передаю вам все доступы и код, плюс остаюсь на связи по вопросам и небольшим доработкам.' },
+  { q: 'Можно ли начать с малого и расширять проект позже?', a: 'Да, это частый и разумный подход — например, начать с лендинга, а чат-бота или AI-агента добавить позже, когда бизнес будет готов.' },
+  { q: 'Как происходит оплата?', a: 'Обычно это предоплата на старт и остаток после сдачи работы; для больших проектов можно разбить на этапы — обсуждаем это на брифе.' },
+];
+---
+<section id="faq" class="section faq">
+  <h2>Частые вопросы</h2>
+  <div class="faq__list">
+    {faqs.map((item) => (
+      <details class="faq__item reveal">
+        <summary>{item.q}</summary>
+        <p>{item.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <div class="faq__cta reveal">
+    <h2>Обсудим ваш проект?</h2>
+    <div class="faq__contact-buttons">
+      <a href="https://t.me/kachkina8" target="_blank" rel="noopener noreferrer" class="btn">Написать в Telegram</a>
+      <a
+        href="https://max.ru/u/f9LHodD0cOJvGC6bWqmbcDj65Lr9l3lmb98CLuwxqb_ehRvdc51EKcZf674"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-secondary"
+      >
+        Написать в MAX
+      </a>
+    </div>
+
+    <form name="contact-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success" class="faq__form">
+      <input type="hidden" name="form-name" value="contact-request" />
+      <p class="hidden-field">
+        <label>Не заполняйте это поле: <input name="bot-field" /></label>
+      </p>
+      <label>
+        Имя
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        Контакт (email или Telegram)
+        <input type="text" name="contact" required />
+      </label>
+      <label>
+        Тип проекта
+        <select name="project-type">
+          <option>Сайт</option>
+          <option>Приложение</option>
+          <option>Чат-бот</option>
+          <option>AI-агент</option>
+          <option>Не знаю</option>
+        </select>
+      </label>
+      <button type="submit" class="btn">Отправить заявку</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .faq__list { display: flex; flex-direction: column; gap: 0.75rem; margin: 2rem 0 4rem; }
+  .faq__item {
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+  }
+  .faq__item summary { cursor: pointer; font-weight: 600; }
+  .faq__item p { margin: 0.75rem 0 0; }
+  .faq__contact-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0 2rem; }
+  .faq__form { display: flex; flex-direction: column; gap: 1rem; max-width: 480px; }
+  .faq__form label { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.9rem; color: var(--color-text-muted); }
+  .faq__form input, .faq__form select {
+    padding: 0.7rem 0.9rem;
+    border-radius: calc(var(--radius) / 2);
+    border: 1px solid color-mix(in srgb, var(--color-text) 18%, transparent);
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    font: inherit;
+  }
+  .faq__form button { align-self: flex-start; margin-top: 0.5rem; }
+</style>
