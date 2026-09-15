@@ -1,0 +1,49 @@
+---
+const themes = [
+  { value: 'dark-ai', label: 'Dark AI' },
+  { value: 'light-conversion', label: 'Light' },
+  { value: 'dark-editorial', label: 'Editorial' },
+];
+---
+<div class="theme-switcher" role="radiogroup" aria-label="Выбор темы оформления (демо)">
+  {themes.map((theme) => (
+    <button type="button" data-theme-value={theme.value} class="theme-switcher__btn">{theme.label}</button>
+  ))}
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.theme-switcher__btn');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const value = btn.dataset.themeValue!;
+      if (value === 'dark-ai') {
+        delete document.documentElement.dataset.theme;
+      } else {
+        document.documentElement.dataset.theme = value;
+      }
+      localStorage.setItem('theme', value);
+    });
+  });
+</script>
+
+<style>
+  .theme-switcher {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 70;
+    display: flex;
+    gap: 0.4rem;
+    background: var(--color-bg-elevated);
+    padding: 0.4rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+  }
+  .theme-switcher__btn {
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+  .theme-switcher__btn:hover { color: var(--color-text); }
+</style>
