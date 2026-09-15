@@ -1,0 +1,78 @@
+---
+import { cases } from '../data/cases';
+import { ArrowUpRight, Sparkles } from 'lucide-astro';
+---
+<section id="portfolio" class="section portfolio">
+  <h2>Проекты в работе и на практике</h2>
+  <p class="portfolio__intro">Учебные и пилотные проекты — показываю подход к задаче, а не только результат.</p>
+  <div class="portfolio__grid">
+    {cases.map((item) => (
+      <article class="portfolio__card reveal">
+        <img src={item.image} alt={item.imageAlt} width="1200" height="860" loading="lazy" />
+        <h3>{item.title}</h3>
+        <dl>
+          <dt>Задача</dt>
+          <dd>{item.task}</dd>
+          <dt>Решение</dt>
+          <dd>{item.solution}</dd>
+          <dt>Почему так</dt>
+          <dd>{item.why}</dd>
+        </dl>
+        <a href={item.link} target="_blank" rel="noopener noreferrer" class="portfolio__link">
+          Смотреть на Behance <ArrowUpRight size={16} />
+        </a>
+      </article>
+    ))}
+    <article class="portfolio__card portfolio__card--soon reveal">
+      <Sparkles size={32} color="var(--color-accent)" />
+      <h3>Рабочий проект — скоро</h3>
+      <p>Здесь появится первый реальный кейс с клиентским результатом.</p>
+    </article>
+  </div>
+</section>
+
+<style>
+  .portfolio__intro { max-width: 60ch; }
+  .portfolio__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .portfolio__card {
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+    padding-bottom: 1.5rem;
+  }
+  .portfolio__card img { width: 100%; height: auto; }
+  .portfolio__card h3 { margin: 1rem 1.5rem 0.5rem; font-size: 1.2rem; }
+  .portfolio__card dl { margin: 0 1.5rem; font-size: 0.9rem; }
+  .portfolio__card dt { color: var(--color-text); font-weight: 600; margin-top: 0.6rem; }
+  .portfolio__card dd { margin: 0.15rem 0 0; color: var(--color-text-muted); }
+  .portfolio__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 1rem 1.5rem 0;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .portfolio__card--soon {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    border-style: dashed;
+    border-width: 2px;
+  }
+  .portfolio__card--soon h3 { margin: 1rem 0 0.4rem; }
+  .portfolio__card--soon p { margin: 0; font-size: 0.9rem; }
+  @media (max-width: 780px) {
+    .portfolio__grid { grid-template-columns: 1fr; }
+  }
+</style>
