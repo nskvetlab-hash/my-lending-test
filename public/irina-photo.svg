@@ -1,0 +1,13 @@
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .placeholder-bg { fill: #17171F; }
+      .placeholder-shape { fill: #404049; }
+      .placeholder-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 20px; fill: #8B8B95; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect width="800" height="800" class="placeholder-bg" />
+  <circle cx="400" cy="280" r="100" class="placeholder-shape" />
+  <ellipse cx="400" cy="500" rx="140" ry="180" class="placeholder-shape" />
+  <text x="400" y="750" class="placeholder-text">Фото — заменить на реальное</text>
+</svg>

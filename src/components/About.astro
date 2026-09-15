@@ -1,0 +1,51 @@
+---
+const stack = ['Figma', 'Astro', 'Claude Code', 'Codex'];
+---
+<section id="about" class="section about">
+  <div class="about__grid">
+    <img src="/irina-photo.svg" alt="Ирина Качкина" width="400" height="400" loading="lazy" class="about__photo reveal" />
+    <div class="reveal">
+      <h2>Кто делает проект</h2>
+      <p class="about__lead">Ирина Качкина</p>
+      <p>
+        Я разрабатываю сайты, приложения, чат-ботов и AI-агентов. Мне интересен весь цикл — от идеи до
+        работающего продукта, поэтому не ограничиваюсь одной технологией. Использую Figma для дизайна и
+        современные AI-инструменты разработки — Claude Code и Codex — это позволяет держать высокий темп
+        и качество даже в одиночку.
+      </p>
+      <p>
+        Я не агентство — вы всегда общаетесь напрямую со мной, без посредников. Расту вместе с каждым
+        проектом и подхожу к задаче так, будто это мой собственный бизнес.
+      </p>
+      <ul class="about__stack">
+        {stack.map((tool) => (
+          <li>{tool}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: start;
+  }
+  .about__photo { border-radius: var(--radius); object-fit: cover; }
+  .about__lead { font-family: var(--font-heading); font-size: 1.2rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .about__stack { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+  .about__stack li {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: var(--color-bg-elevated);
+    border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+  }
+  @media (max-width: 640px) {
+    .about__grid { grid-template-columns: 1fr; }
+    .about__photo { width: 160px; height: 160px; }
+  }
+</style>
