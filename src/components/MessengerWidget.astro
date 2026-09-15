@@ -1,0 +1,33 @@
+---
+import { Send } from 'lucide-astro';
+---
+<div class="messenger-widget">
+  <a href="https://t.me/kachkina8" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" class="messenger-widget__btn">
+    <Send size={22} />
+  </a>
+</div>
+
+<style>
+  .messenger-widget {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 60;
+  }
+  .messenger-widget__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #08080C;
+    box-shadow: 0 12px 24px -8px color-mix(in srgb, var(--color-accent) 60%, transparent);
+    transition: transform 0.2s ease;
+  }
+  .messenger-widget__btn:hover { transform: scale(1.08); }
+  @media (prefers-reduced-motion: reduce) {
+    .messenger-widget__btn:hover { transform: none; }
+  }
+</style>
