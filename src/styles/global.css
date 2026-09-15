@@ -1,5 +1,5 @@
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 html, body { margin: 0; padding: 0; }
 
 body {
@@ -10,7 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img, svg { max-width: 100%; display: block; }
+img, svg { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 button { font: inherit; cursor: pointer; background: none; border: none; }
 ul { list-style: none; margin: 0; padding: 0; }
@@ -22,6 +22,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   --color-text-muted: #A0A0AC;
   --color-accent: #7C6FFF;
   --color-accent-2: #3DDCC7;
+  --color-btn-text: #08080C;
   --font-heading: 'Space Grotesk Variable', sans-serif;
   --font-body: 'Inter Variable', sans-serif;
   --font-mono: 'JetBrains Mono Variable', monospace;
@@ -35,6 +36,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   --color-text-muted: #5C5C5C;
   --color-accent: #2B47FF;
   --color-accent-2: #FF6B4A;
+  --color-btn-text: #FFFFFF;
   --font-heading: 'Manrope Variable', sans-serif;
   --font-body: 'Manrope Variable', sans-serif;
   --font-mono: 'JetBrains Mono Variable', monospace;
@@ -48,6 +50,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   --color-text-muted: #8A8F9C;
   --color-accent: #4ADE80;
   --color-accent-2: #22C55E;
+  --color-btn-text: #08080C;
   --font-heading: 'Fraunces Variable', serif;
   --font-body: 'Inter Variable', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
@@ -68,7 +71,7 @@ p { margin: 0 0 1em; color: var(--color-text-muted); }
   padding: 0.9rem 1.75rem;
   border-radius: var(--radius);
   background: var(--color-accent);
-  color: #08080C;
+  color: var(--color-btn-text);
   font-weight: 600;
   text-decoration: none;
   border: none;
@@ -90,6 +93,7 @@ p { margin: 0 0 1em; color: var(--color-text-muted); }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  .reveal { animation: none; opacity: 1; transform: none; }
 }
 
 .reveal {

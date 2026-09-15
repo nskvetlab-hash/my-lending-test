@@ -35,7 +35,7 @@ const faqs = [
     <form name="contact-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success" class="faq__form">
       <input type="hidden" name="form-name" value="contact-request" />
       <p class="hidden-field">
-        <label>Не заполняйте это поле: <input name="bot-field" /></label>
+        <label>Не заполняйте это поле: <input name="bot-field" tabindex="-1" aria-hidden="true" /></label>
       </p>
       <label>
         Имя
