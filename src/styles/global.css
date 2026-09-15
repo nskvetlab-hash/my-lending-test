@@ -29,34 +29,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   --radius: 16px;
 }
 
-:root[data-theme="light-conversion"] {
-  --color-bg: #FAFAFA;
-  --color-bg-elevated: #FFFFFF;
-  --color-text: #1A1A1A;
-  --color-text-muted: #5C5C5C;
-  --color-accent: #2B47FF;
-  --color-accent-2: #FF6B4A;
-  --color-btn-text: #FFFFFF;
-  --font-heading: 'Manrope Variable', sans-serif;
-  --font-body: 'Manrope Variable', sans-serif;
-  --font-mono: 'JetBrains Mono Variable', monospace;
-  --radius: 6px;
-}
-
-:root[data-theme="dark-editorial"] {
-  --color-bg: #0B0E14;
-  --color-bg-elevated: #12151D;
-  --color-text: #EDEDED;
-  --color-text-muted: #8A8F9C;
-  --color-accent: #4ADE80;
-  --color-accent-2: #22C55E;
-  --color-btn-text: #08080C;
-  --font-heading: 'Fraunces Variable', serif;
-  --font-body: 'Inter Variable', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
-  --radius: 2px;
-}
-
 h1, h2, h3 { font-family: var(--font-heading); line-height: 1.1; margin: 0 0 0.5em; font-weight: 600; }
 h1 { font-size: clamp(2.25rem, 5vw + 1rem, 4.5rem); }
 h2 { font-size: clamp(1.75rem, 3vw + 1rem, 3rem); }
