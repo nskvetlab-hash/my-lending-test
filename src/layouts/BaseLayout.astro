@@ -24,6 +24,7 @@ const { title, description } = Astro.props;
       const saved = localStorage.getItem('theme');
       if (saved && saved !== 'dark-ai') document.documentElement.dataset.theme = saved;
     </script>
+    <script src="../scripts/magnetic-buttons.ts"></script>
   </head>
   <body>
     <slot />
