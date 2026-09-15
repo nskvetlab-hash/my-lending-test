@@ -1,0 +1,45 @@
+---
+import { Globe2, Smartphone, MessageCircle, Bot } from 'lucide-astro';
+
+const services = [
+  { icon: Globe2, title: 'Сайты и лендинги', text: 'Для бизнеса, которому нужно присутствие в сети и заявки с сайта', size: 'large' },
+  { icon: Smartphone, title: 'Веб- и мобильные приложения', text: 'Для процессов, которые пора автоматизировать в отдельный продукт', size: 'small' },
+  { icon: MessageCircle, title: 'Чат-боты', text: 'Для быстрых ответов клиентам в Telegram/WhatsApp без менеджера 24/7', size: 'small' },
+  { icon: Bot, title: 'AI-агенты', text: 'Для задач, где нужно не просто ответить, а решить: подобрать, посчитать, записать', size: 'large' },
+];
+---
+<section id="services" class="section services">
+  <h2>Чем я могу помочь</h2>
+  <div class="services__grid">
+    {services.map((service) => (
+      <article class={`services__card services__card--${service.size} reveal`}>
+        <service.icon size={28} color="var(--color-accent)" />
+        <h3>{service.title}</h3>
+        <p>{service.text}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .services__card {
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+  }
+  .services__card--large { grid-column: span 3; }
+  .services__card--small { grid-column: span 1; }
+  .services__card h3 { font-size: 1.15rem; margin: 0.75rem 0 0.4rem; }
+  .services__card p { margin: 0; font-size: 0.95rem; }
+  @media (max-width: 720px) {
+    .services__grid { grid-template-columns: 1fr; }
+    .services__card--large, .services__card--small { grid-column: span 1; }
+  }
+</style>
