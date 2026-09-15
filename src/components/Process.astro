@@ -1,0 +1,42 @@
+---
+const steps = [
+  { n: '01', title: 'Заявка и созвон', text: 'Обсуждаем задачу бесплатно, без обязательств.' },
+  { n: '02', title: 'Бриф и оценка', text: 'Фиксируем объём, сроки и стоимость.' },
+  { n: '03', title: 'Разработка с промежуточными демо', text: 'Видите прогресс, а не тишину до сдачи.' },
+  { n: '04', title: 'Запуск и поддержка', text: 'Передаю доступы и код, остаюсь на связи после запуска.' },
+];
+---
+<section id="process" class="section process">
+  <h2>Как проходит работа</h2>
+  <ol class="process__list">
+    {steps.map((step) => (
+      <li class="process__step reveal">
+        <span class="process__number">{step.n}</span>
+        <div>
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .process__list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .process__step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+  }
+  .process__step:last-child { border-bottom: none; }
+  .process__number {
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    min-width: 2.5rem;
+  }
+  .process__step h3 { margin: 0 0 0.3rem; font-size: 1.1rem; }
+  .process__step p { margin: 0; }
+</style>
