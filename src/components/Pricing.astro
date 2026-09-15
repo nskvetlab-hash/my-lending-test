@@ -1,0 +1,39 @@
+---
+import { pricingTiers } from '../data/pricing';
+---
+<section id="pricing" class="section pricing">
+  <h2>Сколько это будет стоить</h2>
+  <p class="pricing__disclaimer">Ориентировочные цены — точная стоимость обсуждается после брифа.</p>
+  <div class="pricing__grid">
+    {pricingTiers.map((tier) => (
+      <article class="pricing__card reveal">
+        <h3>{tier.title}</h3>
+        <p class="pricing__price">{tier.price}</p>
+        <ul>
+          {tier.features.map((f) => (
+            <li>{f}</li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+  <a href="#faq" class="btn btn-secondary pricing__cta">Не уверены, что выбрать — обсудим 15 минут бесплатно</a>
+</section>
+
+<style>
+  .pricing__disclaimer { font-size: 0.9rem; }
+  .pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+  .pricing__card {
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+  }
+  .pricing__price { font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-accent); margin: 0.5rem 0 1rem; }
+  .pricing__card ul { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: var(--color-text-muted); }
+  .pricing__card li::before { content: '— '; }
+  .pricing__cta { display: inline-flex; margin-top: 2rem; }
+  @media (max-width: 780px) {
+    .pricing__grid { grid-template-columns: 1fr; }
+  }
+</style>
