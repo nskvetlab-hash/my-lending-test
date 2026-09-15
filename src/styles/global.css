@@ -93,7 +93,7 @@ p { margin: 0 0 1em; color: var(--color-text-muted); }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal { animation: none; opacity: 1; transform: none; }
+  .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
 
 .reveal {
