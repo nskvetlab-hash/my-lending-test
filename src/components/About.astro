@@ -37,12 +37,34 @@ const stack = ['Figma', 'Astro', 'Claude Code', 'Codex'];
   .about__lead { font-family: var(--font-heading); font-size: 1.2rem; color: var(--color-text); margin-bottom: 0.5rem; }
   .about__stack { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
   .about__stack li {
+    position: relative;
+    overflow: hidden;
     font-family: var(--font-mono);
     font-size: 0.85rem;
     padding: 0.35rem 0.75rem;
     border-radius: 999px;
     background: var(--color-bg-elevated);
     border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+  }
+  .about__stack li::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      color-mix(in srgb, var(--color-accent) 35%, transparent) 50%,
+      transparent 70%
+    );
+    background-size: 250% 100%;
+    animation: badge-shine 6s ease-in-out infinite;
+  }
+  .about__stack li:nth-child(2)::after { animation-delay: 1.2s; }
+  .about__stack li:nth-child(3)::after { animation-delay: 2.4s; }
+  .about__stack li:nth-child(4)::after { animation-delay: 3.6s; }
+  @keyframes badge-shine {
+    0%, 40% { background-position: 150% 0; }
+    60%, 100% { background-position: -150% 0; }
   }
   @media (max-width: 640px) {
     .about__grid { grid-template-columns: 1fr; }
