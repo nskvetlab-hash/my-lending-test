@@ -28,6 +28,13 @@ import { pricingTiers } from '../data/pricing';
     border-radius: var(--radius);
     padding: 1.75rem;
     border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  @media (hover: hover) {
+    .pricing__card:hover {
+      background-color: color-mix(in srgb, var(--color-accent-2) 8%, var(--color-bg-elevated));
+      border-color: color-mix(in srgb, var(--color-accent-2) 30%, transparent);
+    }
   }
   .pricing__price { font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-accent); margin: 0.5rem 0 1rem; }
   .pricing__card ul { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: var(--color-text-muted); }

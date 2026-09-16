@@ -33,6 +33,13 @@ const services = [
     border-radius: var(--radius);
     padding: 1.75rem;
     border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  @media (hover: hover) {
+    .services__card:hover {
+      background-color: color-mix(in srgb, var(--color-accent-2) 8%, var(--color-bg-elevated));
+      border-color: color-mix(in srgb, var(--color-accent-2) 30%, transparent);
+    }
   }
   .services__card--large { grid-column: span 3; }
   .services__card--small { grid-column: span 1; }
