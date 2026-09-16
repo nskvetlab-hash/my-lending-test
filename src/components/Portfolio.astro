@@ -3,8 +3,8 @@ import { cases } from '../data/cases';
 import { ArrowUpRight, Sparkles } from 'lucide-astro';
 ---
 <section id="portfolio" class="section portfolio">
-  <h2>Проекты в работе и на практике</h2>
-  <p class="portfolio__intro">Учебные и пилотные проекты — показываю подход к задаче, а не только результат.</p>
+  <h2>Проекты в&nbsp;работе и&nbsp;на&nbsp;практике</h2>
+  <p class="portfolio__intro">Учебные и&nbsp;пилотные проекты — показываю подход к&nbsp;задаче, а&nbsp;не&nbsp;только результат.</p>
   <div class="portfolio__grid">
     {cases.map((item) => (
       <article class="portfolio__card reveal">
@@ -19,14 +19,14 @@ import { ArrowUpRight, Sparkles } from 'lucide-astro';
           <dd>{item.why}</dd>
         </dl>
         <a href={item.link} target="_blank" rel="noopener noreferrer" class="portfolio__link">
-          Смотреть на Behance <ArrowUpRight size={16} />
+          Смотреть на&nbsp;Behance <ArrowUpRight size={16} />
         </a>
       </article>
     ))}
     <article class="portfolio__card portfolio__card--soon reveal">
       <Sparkles size={32} color="var(--color-accent)" />
       <h3>Рабочий проект — скоро</h3>
-      <p>Здесь появится первый реальный кейс с клиентским результатом.</p>
+      <p>Здесь появится первый реальный кейс с&nbsp;клиентским результатом.</p>
     </article>
   </div>
 </section>
