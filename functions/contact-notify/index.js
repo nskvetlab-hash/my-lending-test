@@ -1,12 +1,16 @@
-// Yandex Cloud Function: принимает заявку с сайта и пересылает её в MAX через MAX Bot API.
+// Yandex Cloud Function: принимает заявку с сайта и отправляет её на почту по SMTP.
 //
 // Требуемые переменные окружения (задаются в консоли Yandex Cloud, НЕ в коде):
-//   MAX_BOT_TOKEN — токен бота, выданный @MasterBot в MAX
-//   MAX_USER_ID   — ваш числовой user_id в MAX (куда слать уведомления)
+//   SMTP_USER     — email-адрес отправителя (например, q.m.nmvl@mail.ru)
+//   SMTP_PASSWORD — пароль приложения для SMTP (НЕ обычный пароль от почты, см. README.md)
+//   NOTIFY_TO     — куда слать заявки (по умолчанию q.m.nmvl@mail.ru, если не задано)
+//
+// Позже, когда будет готов бот MAX (после оформления самозанятости), сюда же
+// можно добавить пересылку в MAX Bot API — см. README.md, раздел "Позже: MAX".
 //
 // Деплой: см. functions/max-notify/README.md
 
-const MAX_API_URL = 'https://platform-api2.max.ru/messages';
+const nodemailer = require('nodemailer');
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -51,35 +55,38 @@ module.exports.handler = async function (event) {
     return jsonResponse(400, { ok: false, error: 'missing_fields' });
   }
 
-  const token = process.env.MAX_BOT_TOKEN;
-  const userId = process.env.MAX_USER_ID;
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPassword = process.env.SMTP_PASSWORD;
+  const notifyTo = process.env.NOTIFY_TO || 'q.m.nmvl@mail.ru';
 
-  if (!token || !userId) {
+  if (!smtpUser || !smtpPassword) {
     return jsonResponse(500, { ok: false, error: 'server_not_configured' });
   }
 
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.mail.ru',
+    port: 465,
+    secure: true,
+    auth: { user: smtpUser, pass: smtpPassword },
+  });
+
   const text =
-    'Новая заявка с сайта\n' +
+    'Новая заявка с сайта\n\n' +
     `Имя: ${name}\n` +
     `Контакт: ${contact}\n` +
     `Тип проекта: ${projectType}`;
 
   try {
-    const maxResponse = await fetch(`${MAX_API_URL}?user_id=${encodeURIComponent(userId)}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: token,
-      },
-      body: JSON.stringify({ text }),
+    await transporter.sendMail({
+      from: smtpUser,
+      to: notifyTo,
+      replyTo: contact.includes('@') ? contact : undefined,
+      subject: `Новая заявка с сайта — ${name}`,
+      text,
     });
-
-    if (!maxResponse.ok) {
-      return jsonResponse(502, { ok: false, error: 'max_api_error' });
-    }
 
     return jsonResponse(200, { ok: true });
   } catch {
-    return jsonResponse(502, { ok: false, error: 'max_api_unreachable' });
+    return jsonResponse(502, { ok: false, error: 'smtp_error' });
   }
 };

@@ -59,8 +59,8 @@ const faqs = [
     </form>
 
     <script>
-      // ЗАМЕНИТЬ на реальный URL функции после деплоя (см. functions/max-notify/README.md)
-      const MAX_NOTIFY_FUNCTION_URL = 'MAX_NOTIFY_FUNCTION_URL';
+      // ЗАМЕНИТЬ на реальный URL функции после деплоя (см. functions/contact-notify/README.md)
+      const CONTACT_NOTIFY_URL = 'CONTACT_NOTIFY_URL';
 
       const form = document.getElementById('contact-form') as HTMLFormElement | null;
       const status = form?.querySelector<HTMLParagraphElement>('.faq__form-status');
@@ -77,7 +77,7 @@ const faqs = [
         status.textContent = 'Отправляю…';
 
         try {
-          const response = await fetch(MAX_NOTIFY_FUNCTION_URL, {
+          const response = await fetch(CONTACT_NOTIFY_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
