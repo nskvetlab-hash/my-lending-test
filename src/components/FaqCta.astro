@@ -32,8 +32,7 @@ const faqs = [
       <a href="https://t.me/kachkina8" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Написать в&nbsp;Telegram</a>
     </div>
 
-    <form name="contact-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success" class="faq__form">
-      <input type="hidden" name="form-name" value="contact-request" />
+    <form id="contact-form" class="faq__form">
       <p class="hidden-field">
         <label>Не заполняйте это поле: <input name="bot-field" tabindex="-1" aria-hidden="true" /></label>
       </p>
@@ -56,7 +55,48 @@ const faqs = [
         </select>
       </label>
       <button type="submit" class="btn">Отправить заявку</button>
+      <p class="faq__form-status" role="status" aria-live="polite"></p>
     </form>
+
+    <script>
+      // ЗАМЕНИТЬ на реальный URL функции после деплоя (см. functions/max-notify/README.md)
+      const MAX_NOTIFY_FUNCTION_URL = 'MAX_NOTIFY_FUNCTION_URL';
+
+      const form = document.getElementById('contact-form') as HTMLFormElement | null;
+      const status = form?.querySelector<HTMLParagraphElement>('.faq__form-status');
+
+      form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!status) return;
+
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+
+        const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+        if (submitButton) submitButton.disabled = true;
+        status.textContent = 'Отправляю…';
+
+        try {
+          const response = await fetch(MAX_NOTIFY_FUNCTION_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const result = await response.json();
+
+          if (response.ok && result.ok) {
+            status.textContent = 'Заявка отправлена! Отвечу в течение рабочего дня.';
+            form.reset();
+          } else {
+            status.textContent = 'Не получилось отправить. Напишите напрямую в MAX или Telegram — кнопки выше.';
+          }
+        } catch {
+          status.textContent = 'Не получилось отправить. Напишите напрямую в MAX или Telegram — кнопки выше.';
+        } finally {
+          if (submitButton) submitButton.disabled = false;
+        }
+      });
+    </script>
   </div>
 </section>
 
@@ -82,4 +122,5 @@ const faqs = [
     font: inherit;
   }
   .faq__form button { align-self: flex-start; margin-top: 0.5rem; }
+  .faq__form-status { margin: 0; font-size: 0.9rem; min-height: 1.2em; color: var(--color-text-muted); }
 </style>
