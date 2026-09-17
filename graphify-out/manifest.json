@@ -1,0 +1,122 @@
+{
+  "astro.config.mjs": {
+    "mtime": 1789508865.138783,
+    "seen": 1789651087.4873216,
+    "ast_hash": "ddb52f97af11e04a32be383e4be60f48",
+    "semantic_hash": "ddb52f97af11e04a32be383e4be60f48"
+  },
+  "functions/contact-notify/index.js": {
+    "mtime": 1789595297.233773,
+    "seen": 1789651087.4873216,
+    "ast_hash": "b0d6236035e1657984e112e4ca5d1192",
+    "semantic_hash": "b0d6236035e1657984e112e4ca5d1192"
+  },
+  "functions/contact-notify/package.json": {
+    "mtime": 1789595310.452811,
+    "seen": 1789651087.4873216,
+    "ast_hash": "a103ff83a923307323f1d6b6414a41fb",
+    "semantic_hash": "a103ff83a923307323f1d6b6414a41fb"
+  },
+  "package.json": {
+    "mtime": 1789513745.7346027,
+    "seen": 1789651087.4873216,
+    "ast_hash": "78d17b5a6de325ad2eae2151cd556931",
+    "semantic_hash": "78d17b5a6de325ad2eae2151cd556931"
+  },
+  "src/components/About.astro": {
+    "mtime": 1789592827.4911058,
+    "seen": 1789651087.4873216,
+    "ast_hash": "cd7577c2bd015d650ae96dd20e1c3d0a",
+    "semantic_hash": "cd7577c2bd015d650ae96dd20e1c3d0a"
+  },
+  "src/components/FaqCta.astro": {
+    "mtime": 1789595344.8883946,
+    "seen": 1789651087.4873216,
+    "ast_hash": "3eef6477e8f67051cb166ca50ee00845",
+    "semantic_hash": "3eef6477e8f67051cb166ca50ee00845"
+  },
+  "src/components/Hero.astro": {
+    "mtime": 1789592817.1951108,
+    "seen": 1789651087.4873216,
+    "ast_hash": "bc4c093f4f1469b84244555128709d68",
+    "semantic_hash": "bc4c093f4f1469b84244555128709d68"
+  },
+  "src/components/MessengerWidget.astro": {
+    "mtime": 1789586430.0227947,
+    "seen": 1789651087.4873216,
+    "ast_hash": "618868e7d8247a44b8117137106f1560",
+    "semantic_hash": "618868e7d8247a44b8117137106f1560"
+  },
+  "src/components/Nav.astro": {
+    "mtime": 1789509486.9893432,
+    "seen": 1789651087.4873216,
+    "ast_hash": "ed3f186de20a512e53145a64cc6bd8fa",
+    "semantic_hash": "ed3f186de20a512e53145a64cc6bd8fa"
+  },
+  "src/components/Portfolio.astro": {
+    "mtime": 1789593357.3368866,
+    "seen": 1789651087.4873216,
+    "ast_hash": "91bf0955764b076627ea516876430b2d",
+    "semantic_hash": "91bf0955764b076627ea516876430b2d"
+  },
+  "src/components/Pricing.astro": {
+    "mtime": 1789593373.7098203,
+    "seen": 1789651087.4873216,
+    "ast_hash": "5b9e1c738f7f18543b503639d9fb7768",
+    "semantic_hash": "5b9e1c738f7f18543b503639d9fb7768"
+  },
+  "src/components/Process.astro": {
+    "mtime": 1789594112.0942268,
+    "seen": 1789651087.4873216,
+    "ast_hash": "e39240d85a53ff9349267c0bf7d41dd8",
+    "semantic_hash": "e39240d85a53ff9349267c0bf7d41dd8"
+  },
+  "src/components/Services.astro": {
+    "mtime": 1789593368.1863449,
+    "seen": 1789651087.4873216,
+    "ast_hash": "0f57179bde85f41ba679528dc4636c25",
+    "semantic_hash": "0f57179bde85f41ba679528dc4636c25"
+  },
+  "src/data/cases.ts": {
+    "mtime": 1789589969.839594,
+    "seen": 1789651087.4873216,
+    "ast_hash": "ee20a607ec218bb6e005f2564da2da62",
+    "semantic_hash": "ee20a607ec218bb6e005f2564da2da62"
+  },
+  "src/data/pricing.ts": {
+    "mtime": 1789589994.2935188,
+    "seen": 1789651087.4873216,
+    "ast_hash": "ff27889820a8c06553fd1bcb71f77a32",
+    "semantic_hash": "ff27889820a8c06553fd1bcb71f77a32"
+  },
+  "src/layouts/BaseLayout.astro": {
+    "mtime": 1789513733.319674,
+    "seen": 1789651087.4873216,
+    "ast_hash": "3613da174066745274f591dc344d00fb",
+    "semantic_hash": "3613da174066745274f591dc344d00fb"
+  },
+  "src/pages/index.astro": {
+    "mtime": 1789513699.780226,
+    "seen": 1789651087.4873216,
+    "ast_hash": "b9f7159e169858eba617b5a0911870af",
+    "semantic_hash": "b9f7159e169858eba617b5a0911870af"
+  },
+  "src/pages/success.astro": {
+    "mtime": 1789590017.9473076,
+    "seen": 1789651087.4873216,
+    "ast_hash": "ecaf7a0ecb4c3caa79316b0537d6e93b",
+    "semantic_hash": "ecaf7a0ecb4c3caa79316b0537d6e93b"
+  },
+  "src/scripts/magnetic-buttons.ts": {
+    "mtime": 1789511527.8591042,
+    "seen": 1789651087.4873216,
+    "ast_hash": "e97a592551bd23cf05464bc54478b266",
+    "semantic_hash": "e97a592551bd23cf05464bc54478b266"
+  },
+  "tsconfig.json": {
+    "mtime": 1789508868.2303889,
+    "seen": 1789651087.4873216,
+    "ast_hash": "1d3613ac08bdda17e2b82251613dbc21",
+    "semantic_hash": "1d3613ac08bdda17e2b82251613dbc21"
+  }
+}
