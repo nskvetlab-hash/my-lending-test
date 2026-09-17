@@ -3,6 +3,7 @@ import '@fontsource-variable/space-grotesk';
 import '@fontsource-variable/inter';
 import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -39,5 +40,6 @@ const ogImageURL = new URL(ogImage, Astro.site);
   </head>
   <body>
     <slot />
+    <Footer />
   </body>
 </html>
