@@ -1,4 +1,6 @@
 ---
+import { Menu, X } from 'lucide-astro';
+
 const links = [
   { href: '#services', label: 'Услуги' },
   { href: '#portfolio', label: 'Портфолио' },
@@ -10,13 +12,56 @@ const links = [
 ---
 <header class="nav">
   <a href="#top" class="nav__brand">Ирина Качкина</a>
-  <nav class="nav__links" aria-label="Основная навигация">
+
+  <nav class="nav__links" id="nav-menu" aria-label="Основная навигация">
     {links.map((link) => (
       <a href={link.href}>{link.label}</a>
     ))}
   </nav>
+
   <a href="#faq" class="btn nav__cta">Обсудить проект</a>
+
+  <button
+    type="button"
+    class="nav__toggle"
+    aria-expanded="false"
+    aria-controls="nav-menu"
+    aria-label="Открыть меню"
+  >
+    <Menu class="nav__toggle-icon nav__toggle-icon--open" size={24} aria-hidden="true" />
+    <X class="nav__toggle-icon nav__toggle-icon--close" size={24} aria-hidden="true" />
+  </button>
 </header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.nav');
+  const toggle = header?.querySelector<HTMLButtonElement>('.nav__toggle');
+  const menu = header?.querySelector<HTMLElement>('#nav-menu');
+
+  if (header && toggle && menu) {
+    const setOpen = (open: boolean) => {
+      header.classList.toggle('nav--open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(!header.classList.contains('nav--open'));
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setOpen(false);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!header.contains(event.target as Node)) setOpen(false);
+    });
+  }
+</script>
 
 <style>
   .nav {
@@ -42,10 +87,7 @@ const links = [
   .nav__links {
     display: flex;
     gap: 1.25rem;
-    overflow-x: auto;
-    scrollbar-width: none;
   }
-  .nav__links::-webkit-scrollbar { display: none; }
   .nav__links a {
     text-decoration: none;
     color: var(--color-text-muted);
@@ -60,7 +102,54 @@ const links = [
   }
   .nav__links a:hover { color: var(--color-text); }
   .nav__cta { white-space: nowrap; padding: 0.6rem 1.1rem; font-size: 0.9rem; }
-  @media (max-width: 640px) {
+
+  .nav__toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    color: var(--color-text);
+    border-radius: calc(var(--radius) / 2);
+  }
+  .nav__toggle:hover { color: var(--color-accent); }
+  .nav__toggle-icon--close { display: none; }
+  .nav--open .nav__toggle-icon--open { display: none; }
+  .nav--open .nav__toggle-icon--close { display: block; }
+
+  @media (max-width: 860px) {
     .nav__cta { display: none; }
+    .nav__toggle { display: flex; }
+
+    .nav__links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      padding: 0.5rem clamp(1rem, 5vw, 3rem) 1rem;
+      background: var(--color-bg);
+      border-bottom: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+    .nav__links a {
+      width: 100%;
+      justify-content: flex-start;
+      min-width: 0;
+    }
+    .nav--open .nav__links {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav__links { transition: none; }
   }
 </style>
